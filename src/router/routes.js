@@ -2,7 +2,7 @@ import { ProductsList } from "@/views/Pages";
 
 const routes = [
   {
-    path: "/",
+    path: "/products",
     component: ProductsList,
   },
 ];
