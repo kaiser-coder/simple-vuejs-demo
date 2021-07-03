@@ -28,10 +28,29 @@
 
     <footer class="pt-3 pb-3 bg-dark text-white">
       <div class="container">
-        <div class="col-6">
-          AUTEURS
+        <div class="row">
+          <div class="col-6">
+            <p>
+              AUTEURS <br>
+              <ul>
+                <li>RATOMPOARISON Rovasoa Tahinjanahary Nicolas</li>
+                <li>HENINTSOA Onjaniaina Stephana</li>
+                <li>ANDRIATSILAVO Mahery Sitraka</li>
+                <li>RANDRIANIAINA Rajosoa</li>
+                <li>ANDRIAMANJATO Tsilavo Hery Sitraka</li>
+              </ul>
+            </p>
+          </div>
+          <div class="col-6">
+            <p>
+              CONTACTS <br>
+              <ul>
+                <li>Tél : 0345805875</li>
+                <li>Email : nicolasratompoarison@gmail.com</li>
+              </ul>
+            </p>
+          </div>
         </div>
-        <div class="col-6"></div>
       </div>
     </footer>
   </div>
