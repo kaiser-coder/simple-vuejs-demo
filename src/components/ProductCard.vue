@@ -16,7 +16,7 @@
       <h5>Prix: {{ product.price }}</h5>
     </b-card-text>
 
-    <b-button href="#" variant="info" @click="add_product_panel(product)"
+    <b-button href="#" variant="info" @click.prevent="add_product(product)"
       >Ajouter au panier</b-button
     >
   </b-card>
@@ -24,18 +24,20 @@
 
 <script>
 import Vuex from "vuex";
+import store from "@/stores/ProductsListStore";
 
 export default {
+  store: store,
   name: "product-card",
   props: ["product"],
   methods: {
-    ...Vuex.mapGetters(["add_product_panel"]),
+    ...Vuex.mapActions(["add_product"]),
   },
 };
 </script>
 
 <style scoped>
 #product-card {
-  font-size: 14px;
+  font-size: 13px;
 }
 </style>

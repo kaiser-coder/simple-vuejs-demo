@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import _ from "lodash";
 
 Vue.use(Vuex);
 
@@ -8,7 +9,7 @@ const state = {
     {
       name: "Produit1",
       img: "Image",
-      price: "154",
+      price: "155",
       description:
         "Totam veniam dolor atque architecto aperiam cupiditate eligendi nihil non. Iusto ea consequatur ut dolorem nam. Voluptate velit blanditiis ducimus dolores quis odit debitis veniam quo. Id sed ut velit dolores qui quasi. Et voluptatum vel.",
     },
@@ -20,11 +21,19 @@ const mutations = {
   ADD_PRODUCT_PANEL: (state, product) => {
     state.selectedProducts.push(product);
   },
+  REMOVE_PRODUCT_PANEL: (state, id) => {
+    _.remove(state.selectedProducts, (el) => {
+      return el.id != id;
+    });
+  },
 };
 
 const actions = {
-  add_product_panel: (store, product) => {
+  add_product: (store, product) => {
     store.commit("ADD_PRODUCT_PANEL", product);
+  },
+  remove_product: (store, id) => {
+    store.commit("REMOVE_PRODUCT_PANEL", id);
   },
 };
 
