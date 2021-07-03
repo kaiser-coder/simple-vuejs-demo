@@ -5,15 +5,7 @@ import _ from "lodash";
 Vue.use(Vuex);
 
 const state = {
-  products: [
-    {
-      name: "Produit1",
-      img: "Image",
-      price: "155",
-      description:
-        "Totam veniam dolor atque architecto aperiam cupiditate eligendi nihil non. Iusto ea consequatur ut dolorem nam. Voluptate velit blanditiis ducimus dolores quis odit debitis veniam quo. Id sed ut velit dolores qui quasi. Et voluptatum vel.",
-    },
-  ],
+  products: [],
   selectedProducts: [],
 };
 
@@ -47,5 +39,4 @@ export default new Vuex.Store({
   mutations: mutations,
   getters: getters,
   actions: actions,
-  strict: true,
 });

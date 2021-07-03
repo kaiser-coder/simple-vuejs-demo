@@ -1,13 +1,12 @@
 <template>
   <b-card
     id="product-card"
-    :title="product.name"
-    :img-src="product.img"
+    :title="product.title"
+    :img-src="product.image"
     img-alt="Image"
     img-top
     tag="article"
-    style="max-width: 20rem;"
-    class="mb-2"
+    class="m-1 col-3"
   >
     <b-card-text>
       {{ product.description }}
