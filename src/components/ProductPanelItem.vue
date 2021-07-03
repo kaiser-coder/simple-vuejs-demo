@@ -3,7 +3,7 @@
     <div class="alert alert-secondary">
       <div class="row">
         <div class="col-10">
-          <b>{{ product.name }}</b>
+          <b>{{ product.title }}</b>
         </div>
         <div class="col-2">
           <a
