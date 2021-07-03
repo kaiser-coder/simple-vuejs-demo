@@ -1,24 +1,21 @@
 # vuejs-ecommerce
 
-## Project setup
+## Outils utilisés
+
+Visual Studio Code
+Node v12.14
+Git
+
+NB: Pensez à installer Node suivant votre système d'exploitation, vous pouvez installer une version supérieur
+
+## Pour installer les dépendances du projet
+
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Pour la compilation et le lancement du projet
+
 ```
 yarn serve
 ```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
