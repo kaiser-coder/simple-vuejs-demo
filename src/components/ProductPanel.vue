@@ -20,9 +20,7 @@
         <b-card-text class="mt-4">
           <h5>Total: {{ totalPricePanel }}</h5>
         </b-card-text>
-        <b-button href="#" variant="info"
-          >Acheter ({{ selectedProductsCount }})</b-button
-        >
+        <login-modal :productsCount="selectedProductsCount"></login-modal>
       </b-card>
     </b-card-group>
   </div>
@@ -30,6 +28,7 @@
 
 <script>
 import ProductPanelItem from "./ProductPanelItem.vue";
+import LoginModal from "./LoginModal.vue";
 import store from "@/stores/ProductsListStore.js";
 import Vuex from "vuex";
 
@@ -38,6 +37,7 @@ export default {
   name: "product-panel",
   components: {
     ProductPanelItem,
+    LoginModal,
   },
   computed: {
     ...Vuex.mapGetters([
