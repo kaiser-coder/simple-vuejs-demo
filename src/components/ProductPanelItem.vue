@@ -3,13 +3,13 @@
     <div class="alert alert-secondary">
       <div class="row">
         <div class="col-10">
-          <b>{{ product.name }}</b>
+          <b>{{ product.title }}</b>
         </div>
         <div class="col-2">
           <a
             id="drop-btn"
             class="font-weight-bold text-dark"
-            @click.prevent="remove_product(id)"
+            @click.prevent="remove_product"
           >
             x
           </a>
@@ -25,15 +25,13 @@
 </template>
 
 <script>
-import store from "@/stores/ProductsListStore.js";
-import Vuex from "vuex";
-
 export default {
-  store: store,
   name: "product-panel-item",
   props: ["product"],
   methods: {
-    ...Vuex.mapActions(["remove_product"]),
+    remove_product() {
+      this.$emit("removeProductPanel");
+    },
   },
 };
 </script>

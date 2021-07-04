@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import Vuex from "vuex";
 import store from "@/stores/ProductsListStore";
 
 export default {
@@ -30,7 +29,9 @@ export default {
   name: "product-card",
   props: ["product"],
   methods: {
-    ...Vuex.mapActions(["add_product"]),
+    add_product: (product) => {
+      this.$emit("add_product_panel", product);
+    },
   },
 };
 </script>

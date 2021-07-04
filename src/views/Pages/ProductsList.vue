@@ -6,6 +6,7 @@
           :product="product"
           v-for="product in products"
           :key="product.id"
+          @addToPanel="add_product(product)"
         ></product-card>
       </div>
     </div>
@@ -19,7 +20,7 @@
 import ProductCard from "@/components/ProductCard";
 import ProductPanel from "@/components/ProductPanel";
 import store from "@/stores/ProductsListStore.js";
-import axios from "axios";
+import Vuex from "vuex";
 
 export default {
   store: store,
@@ -29,14 +30,13 @@ export default {
     ProductPanel,
   },
   computed: {
-    products: () => {
-      return store.state.products;
-    },
+    ...Vuex.mapGetters(["products"]),
   },
-  mounted: () => {
-    axios
-      .get("https://fakestoreapi.com/products?limit=9")
-      .then((response) => (store.state.products = response.data));
+  mounted() {
+    this.fetch_products();
+  },
+  methods: {
+    ...Vuex.mapActions(["add_product", "fetch_products"]),
   },
 };
 </script>
