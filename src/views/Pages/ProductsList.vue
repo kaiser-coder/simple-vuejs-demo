@@ -30,13 +30,13 @@ export default {
     ProductPanel,
   },
   computed: {
-    ...Vuex.mapGetters(["products"]),
+    ...Vuex.mapGetters(["products", "productCategories"]),
   },
   mounted() {
     this.fetch_products();
   },
   methods: {
-    ...Vuex.mapActions(["add_product", "fetch_products"]),
+    ...Vuex.mapActions(["add_product", "fetch_products", "filter_products"]),
   },
 };
 </script>
