@@ -9,7 +9,7 @@
           <a
             id="drop-btn"
             class="font-weight-bold text-dark"
-            @click.prevent="remove_product(id)"
+            @click.prevent="remove_product"
           >
             x
           </a>
@@ -25,15 +25,13 @@
 </template>
 
 <script>
-import store from "@/stores/ProductsListStore.js";
-import Vuex from "vuex";
-
 export default {
-  store: store,
   name: "product-panel-item",
   props: ["product"],
   methods: {
-    ...Vuex.mapActions(["remove_product"]),
+    remove_product() {
+      this.$emit("removeProductPanel");
+    },
   },
 };
 </script>

@@ -2,9 +2,12 @@
   <div>
     <b-card-group deck>
       <b-card header="Articles">
-        <div v-if="products != []">
-          <div v-for="product in products" :key="product.id">
-            <product-panel-item :product="product"></product-panel-item>
+        <div v-if="totalPricePanel != []">
+          <div v-for="product in selectedProducts" :key="product.id">
+            <product-panel-item
+              :product="product"
+              @removeProductPanel="remove_product(product.id)"
+            ></product-panel-item>
           </div>
         </div>
 
@@ -15,10 +18,10 @@
         </div>
 
         <b-card-text class="mt-4">
-          <h5>Total: {{ totalPrice }}</h5>
+          <h5>Total: Ar {{ totalPricePanel }}</h5>
         </b-card-text>
         <b-button href="#" variant="info"
-          >Acheter ({{ productsCount }})</b-button
+          >Acheter ({{ selectedProductsCount }})</b-button
         >
       </b-card>
     </b-card-group>
@@ -28,22 +31,23 @@
 <script>
 import ProductPanelItem from "./ProductPanelItem.vue";
 import store from "@/stores/ProductsListStore.js";
+import Vuex from "vuex";
 
 export default {
+  store: store,
   name: "product-panel",
   components: {
     ProductPanelItem,
   },
   computed: {
-    products: () => store.state.selectedProducts,
-    productsCount: () => store.state.selectedProducts.length,
-    totalPrice: () => {
-      let total = 0;
-      store.state.selectedProducts.forEach((item) => {
-        total += item.price * 1;
-      });
-      return total;
-    },
+    ...Vuex.mapGetters([
+      "selectedProducts",
+      "selectedProductsCount",
+      "totalPricePanel",
+    ]),
+  },
+  methods: {
+    ...Vuex.mapActions(["remove_product"]),
   },
 };
 </script>
