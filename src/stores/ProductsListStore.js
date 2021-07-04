@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
 import _ from "lodash";
 
 Vue.use(Vuex);
@@ -10,17 +11,25 @@ const state = {
 };
 
 const mutations = {
+  FETCH_PRODUCTS: (state) => {
+    axios
+      .get("https://fakestoreapi.com/products?limit=9")
+      .then((response) => (state.products = response.data));
+  },
   ADD_PRODUCT_PANEL: (state, product) => {
     state.selectedProducts.push(product);
   },
   REMOVE_PRODUCT_PANEL: (state, id) => {
-    _.remove(state.selectedProducts, (el) => {
+    state.selectedProducts = _.remove(state.selectedProducts, (el) => {
       return el.id != id;
     });
   },
 };
 
 const actions = {
+  fetch_products: (store) => {
+    store.commit("FETCH_PRODUCTS");
+  },
   add_product: (store, product) => {
     store.commit("ADD_PRODUCT_PANEL", product);
   },
@@ -32,6 +41,14 @@ const actions = {
 const getters = {
   products: (state) => state.products,
   selectedProducts: (state) => state.selectedProducts,
+  selectedProductsCount: (state) => state.selectedProducts.length,
+  totalPricePanel: (state) => {
+    let total = 0;
+    state.selectedProducts.forEach((item) => {
+      total += item.price * 1;
+    });
+    return Math.round(total * 100) / 100;
+  },
 };
 
 export default new Vuex.Store({
