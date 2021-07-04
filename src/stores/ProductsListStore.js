@@ -17,7 +17,8 @@ const mutations = {
       .then((response) => (state.products = response.data));
   },
   ADD_PRODUCT_PANEL: (state, product) => {
-    state.selectedProducts.push(product);
+    let p = _.findIndex(state.selectedProducts, { id: product.id });
+    if (p == -1) state.selectedProducts.push(product);
   },
   REMOVE_PRODUCT_PANEL: (state, id) => {
     state.selectedProducts = _.remove(state.selectedProducts, (el) => {
