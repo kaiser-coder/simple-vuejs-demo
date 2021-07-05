@@ -15,7 +15,10 @@
           "
           >{{ product.title }}</a
         >
-        <h6 class="font-weight-bold">Ar {{ product.price }}</h6>
+        <h6 class="font-weight-bold">
+          <b-icon icon="tags-fill" font-scale="1"></b-icon>
+          Ar {{ product.price }}
+        </h6>
       </b-card-text>
     </b-card>
 

@@ -33,8 +33,9 @@
 
               <b-row class="mt-4 mb-4">
                 <b-col lg="12">
-                  <b-button block variant="outline-info"
-                    >Ajouter le produit</b-button
+                  <b-button block variant="outline-info">
+                    <b-icon icon="bag-plus" font-scale="1"></b-icon>
+                    Ajouter le produit</b-button
                   >
                 </b-col>
               </b-row>
