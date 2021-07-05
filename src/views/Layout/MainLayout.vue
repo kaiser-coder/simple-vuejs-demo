@@ -1,13 +1,17 @@
 <template>
   <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar toggleable="lg" type="light" variant="faded">
       <b-navbar-brand href="#">E-commerce</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="/products">Produits</b-nav-item>
+          <b-nav-item href="/home">Accueil</b-nav-item>
+          <b-nav-item href="/products">Boutique</b-nav-item>
+          <b-nav-item href=""
+            >Panier <b-badge variant="info">9 </b-badge></b-nav-item
+          >
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
