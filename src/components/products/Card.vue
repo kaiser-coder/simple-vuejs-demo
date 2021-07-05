@@ -8,24 +8,38 @@
       tag="article"
     >
       <b-card-text>
-        <a href="" class="text-muted">{{ product.title }}</a>
-      </b-card-text>
-      <b-card-text>
-        <h6>Ar {{ product.price }}</h6>
+        <a
+          class="text-muted"
+          @click.prevent="
+            $bvModal.show('bv-modal-product-details' + product.id)
+          "
+          >{{ product.title }}</a
+        >
+        <h6 class="font-weight-bold">Ar {{ product.price }}</h6>
       </b-card-text>
     </b-card>
+
+    <product-details :product="product"></product-details>
   </div>
 </template>
 
 <script>
+import ProductDetails from "./Details";
+
 export default {
   name: "product-card",
   props: ["product"],
+  components: {
+    ProductDetails,
+  },
 };
 </script>
 
 <style scoped>
 #product-card {
   font-size: 13px;
+}
+a {
+  cursor: pointer;
 }
 </style>
