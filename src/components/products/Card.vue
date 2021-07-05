@@ -1,34 +1,40 @@
 <template>
-  <div class="col-3">
+  <div class="col-lg-4 col-sm-12 pb-2">
     <b-card
       id="product-card"
-      :title="product.title"
       :img-src="product.image"
       img-alt="Image"
       img-top
       tag="article"
+      img-height="400"
     >
       <b-card-text>
-        {{ product.description }}
+        <a
+          class="text-muted"
+          @click.prevent="
+            $bvModal.show('bv-modal-product-details' + product.id)
+          "
+          >{{ product.title }}</a
+        >
+        <h6 class="font-weight-bold">
+          <b-icon icon="tags-fill" font-scale="1"></b-icon>
+          Ar {{ product.price }}
+        </h6>
       </b-card-text>
-      <b-card-text>
-        <h5>Prix: {{ product.price }}</h5>
-      </b-card-text>
-      <b-button href="#" variant="info" @click.prevent="addProduct(product)"
-        >Ajouter au panier</b-button
-      >
     </b-card>
+
+    <product-details :product="product"></product-details>
   </div>
 </template>
 
 <script>
+import ProductDetails from "./Details";
+
 export default {
   name: "product-card",
   props: ["product"],
-  methods: {
-    addProduct(product) {
-      this.$emit("addToPanel", product);
-    },
+  components: {
+    ProductDetails,
   },
 };
 </script>
@@ -36,5 +42,8 @@ export default {
 <style scoped>
 #product-card {
   font-size: 13px;
+}
+a {
+  cursor: pointer;
 }
 </style>
