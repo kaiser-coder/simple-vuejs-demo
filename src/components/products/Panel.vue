@@ -4,10 +4,10 @@
       <b-card header="Articles">
         <div v-if="totalPricePanel != []">
           <div v-for="product in selectedProducts" :key="product.id">
-            <product-panel-item
+            <panel-item
               :product="product"
-              @removeProductPanel="remove_product(product.id)"
-            ></product-panel-item>
+              @removeProductPanel="removeProduct(product.id)"
+            ></panel-item>
           </div>
         </div>
 
@@ -20,34 +20,29 @@
         <b-card-text class="mt-4">
           <h5>Total: {{ totalPricePanel }}</h5>
         </b-card-text>
-        <login-modal :productsCount="selectedProductsCount"></login-modal>
       </b-card>
     </b-card-group>
   </div>
 </template>
 
 <script>
-import ProductPanelItem from "./ProductPanelItem.vue";
-import LoginModal from "./LoginModal.vue";
-import store from "@/stores/ProductsListStore.js";
-import Vuex from "vuex";
+import PanelItem from "./PanelItem.vue";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  store: store,
   name: "product-panel",
   components: {
-    ProductPanelItem,
-    LoginModal,
+    PanelItem,
   },
   computed: {
-    ...Vuex.mapGetters([
+    ...mapGetters("Products", [
       "selectedProducts",
       "selectedProductsCount",
       "totalPricePanel",
     ]),
   },
   methods: {
-    ...Vuex.mapActions(["remove_product"]),
+    ...mapActions(["removeProduct"]),
   },
 };
 </script>

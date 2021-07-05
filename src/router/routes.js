@@ -1,9 +1,9 @@
-import { ProductsList } from "@/views/Pages";
+import { Products } from "@/views/Pages";
 
 const routes = [
   {
     path: "/products",
-    component: ProductsList,
+    component: Products,
   },
 ];
 

@@ -14,7 +14,7 @@
       <b-card-text>
         <h5>Prix: {{ product.price }}</h5>
       </b-card-text>
-      <b-button href="#" variant="info" @click.prevent="add_product(product)"
+      <b-button href="#" variant="info" @click.prevent="addProduct(product)"
         >Ajouter au panier</b-button
       >
     </b-card>
@@ -22,14 +22,11 @@
 </template>
 
 <script>
-import store from "@/stores/ProductsListStore";
-
 export default {
-  store: store,
   name: "product-card",
   props: ["product"],
   methods: {
-    add_product(product) {
+    addProduct(product) {
       this.$emit("addToPanel", product);
     },
   },

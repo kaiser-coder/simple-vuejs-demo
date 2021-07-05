@@ -1,4 +1,10 @@
-import ProductsListStore from "./ProductsListStore";
-import ClientsLoginStore from "./ClientsLoginStore";
+import Vue from "vue";
+import Vuex from "vuex";
+import Products from "./modules/Products";
 
-export default { ProductsListStore, ClientsLoginStore };
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+  modules: { Products },
+  strict: true,
+});

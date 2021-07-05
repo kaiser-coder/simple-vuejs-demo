@@ -9,16 +9,18 @@
       <div class="row">
         <div class="col-9">
           <div class="row">
-            <product-card
+            <!-- Product Card -->
+            <card
               :product="product"
               v-for="product in products"
               :key="product.id"
-              @addToPanel="add_product(product)"
-            ></product-card>
+              @addToPanel="addProduct(product)"
+            ></card>
           </div>
         </div>
         <div class="col-3">
-          <product-panel></product-panel>
+          <!-- Product Panel -->
+          <panel></panel>
         </div>
       </div>
     </div>
@@ -26,26 +28,24 @@
 </template>
 
 <script>
-import ProductCard from "@/components/ProductCard";
-import ProductPanel from "@/components/ProductPanel";
-import store from "@/stores/ProductsListStore.js";
-import Vuex from "vuex";
+import Card from "@/components/products/Card";
+import Panel from "@/components/products/Panel";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
-  store: store,
-  name: "products-list",
+  name: "products",
   components: {
-    ProductCard,
-    ProductPanel,
+    Card,
+    Panel,
   },
   computed: {
-    ...Vuex.mapGetters(["products"]),
+    ...mapGetters("Products", ["products"]),
   },
   mounted() {
-    this.fetch_products();
+    this.getProducts();
   },
   methods: {
-    ...Vuex.mapActions(["add_product", "fetch_products", "filter_products"]),
+    ...mapActions("Products", ["addProduct", "getProducts"]),
   },
 };
 </script>
