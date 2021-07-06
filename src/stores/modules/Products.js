@@ -7,8 +7,8 @@ const state = {
 };
 
 const mutations = {
-  SET_PRODUCTS: (state, products) => {
-    state.products = products;
+  SET_PRODUCTS: (state) => {
+    Product.fetch().then((data) => (state.products = data));
   },
   ADD_PRODUCT_PANEL: (state, product) => {
     let p = _.findIndex(state.selectedProducts, { id: product.id });
@@ -22,9 +22,6 @@ const mutations = {
 };
 
 const actions = {
-  getProducts: (store) => {
-    store.commit("SET_PRODUCTS", Product.getProducts());
-  },
   addProduct: (store, product) => {
     store.commit("ADD_PRODUCT_PANEL", product);
   },
