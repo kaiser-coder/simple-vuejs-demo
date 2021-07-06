@@ -1,9 +1,5 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import axios from "axios";
+import Product from "@/api/Products";
 import _ from "lodash";
-
-Vue.use(Vuex);
 
 const state = {
   products: [],
@@ -11,13 +7,12 @@ const state = {
 };
 
 const mutations = {
-  FETCH_PRODUCTS: (state) => {
-    axios
-      .get("https://fakestoreapi.com/products?limit=9")
-      .then((response) => (state.products = response.data));
+  SET_PRODUCTS: (state) => {
+    Product.fetch().then((data) => (state.products = data));
   },
   ADD_PRODUCT_PANEL: (state, product) => {
-    state.selectedProducts.push(product);
+    let p = _.findIndex(state.selectedProducts, { id: product.id });
+    if (p == -1) state.selectedProducts.push(product);
   },
   REMOVE_PRODUCT_PANEL: (state, id) => {
     state.selectedProducts = _.remove(state.selectedProducts, (el) => {
@@ -27,13 +22,10 @@ const mutations = {
 };
 
 const actions = {
-  fetch_products: (store) => {
-    store.commit("FETCH_PRODUCTS");
-  },
-  add_product: (store, product) => {
+  addProduct: (store, product) => {
     store.commit("ADD_PRODUCT_PANEL", product);
   },
-  remove_product: (store, id) => {
+  removeProduct: (store, id) => {
     store.commit("REMOVE_PRODUCT_PANEL", id);
   },
 };
@@ -51,9 +43,10 @@ const getters = {
   },
 };
 
-export default new Vuex.Store({
+export default {
+  namespaced: true,
   state: state,
   mutations: mutations,
   getters: getters,
   actions: actions,
-});
+};
