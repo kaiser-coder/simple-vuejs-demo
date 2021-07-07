@@ -37,14 +37,8 @@ const actions = {
   },
 };
 
-const getters = {
-  users: (state) => state.users,
-  connectedUser: (state) => state.connectedUser,
-};
-
 export default {
   namespaced: true,
-  getters,
   state,
   mutations,
   actions,

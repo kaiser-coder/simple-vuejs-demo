@@ -41,6 +41,7 @@
                     block
                     variant="outline-info"
                     @click.prevent="chooseProduct(product, qtt)"
+                    :disabled="connectedUser.length == 0 ? true : false"
                   >
                     <b-icon icon="bag-plus" font-scale="1"></b-icon>
                     Ajouter le produit</b-button
@@ -56,7 +57,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 export default {
   name: "product-details",
   props: ["product"],
@@ -72,6 +73,9 @@ export default {
       this.addProduct(item);
       this.$bvModal.hide("bv-modal-product-details" + this.product.id);
     },
+  },
+  computed: {
+    ...mapState("users", ["connectedUser"]),
   },
 };
 </script>
