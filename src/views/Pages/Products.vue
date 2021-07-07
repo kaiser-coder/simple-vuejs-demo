@@ -58,11 +58,10 @@ export default {
     ...mapState("Products", ["products", "categories"]),
   },
   mounted() {
-    this.getProducts();
-    this.getCategories();
+    this.fetchData();
   },
   methods: {
-    ...mapActions("Products", ["getProducts", "getCategories"]),
+    ...mapActions("Products", ["fetchData"]),
   },
 };
 </script>
