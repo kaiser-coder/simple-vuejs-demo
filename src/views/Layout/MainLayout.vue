@@ -7,10 +7,6 @@
 
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="/home">
-            <b-icon icon="house" font-scale="1"></b-icon>
-            Accueil</b-nav-item
-          >
           <b-nav-item href="/products">
             <b-icon icon="shop" font-scale="1"></b-icon>
             Boutique
@@ -26,17 +22,31 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown right>
+          <b-nav-item-dropdown right v-if="connectedUser.length == 0">
             <!-- Using 'button-content' slot -->
             <template #button-content>
-              <em>User</em>
+              <em>Utilisateur</em>
             </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            <b-dropdown-item
+              href=""
+              @click.prevent="$bvModal.show('bv-modal-user-login')"
+              >Se connecter</b-dropdown-item
+            >
+          </b-nav-item-dropdown>
+          <b-nav-item-dropdown right v-else>
+            <!-- Using 'button-content' slot -->
+            <template #button-content>
+              <em>{{ fullname }}</em>
+            </template>
+            <b-dropdown-item href="" @click.prevent="logout()"
+              >Se Déconnecter</b-dropdown-item
+            >
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+
+    <login-form></login-form>
 
     <router-view></router-view>
 
@@ -105,10 +115,14 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapState, mapActions } from "vuex";
+import LoginForm from "@/components/users/LoginForm.vue";
 
 export default {
   name: "main-layout",
+  components: {
+    LoginForm,
+  },
   data() {
     return {
       authors: [
@@ -124,8 +138,23 @@ export default {
       },
     };
   },
+  mounted() {
+    this.fetchUsers();
+  },
   computed: {
     ...mapGetters("Carts", ["selectedProductsCount"]),
+    ...mapState("users", ["connectedUser"]),
+
+    fullname() {
+      return (
+        this.connectedUser.name.firstname +
+        " " +
+        this.connectedUser.name.lastname
+      );
+    },
+  },
+  methods: {
+    ...mapActions("users", ["fetchUsers", "auth", "logout"]),
   },
 };
 </script>
