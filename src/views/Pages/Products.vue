@@ -1,29 +1,49 @@
 <template>
-  <div class="container">
-    <!-- Product Cart Modal -->
-    <cart>
-      <cart-item
-        v-for="product in products"
-        :key="product.id"
-        :product="product"
-      ></cart-item>
-    </cart>
+  <div>
+    <!-- Breadcumb -->
+    <b-row>
+      <b-col lg="6" class="ml-4">
+        <b-nav>
+          <b-nav-item link-classes="text-dark" disbaled
+            >Toutes les catégories:
+          </b-nav-item>
+          <b-nav-item
+            link-classes="text-dark"
+            v-for="(category, index) in categories"
+            :key="index"
+          >
+            {{ category }}
+          </b-nav-item>
+        </b-nav>
+      </b-col>
+    </b-row>
 
-    <div class="row mt-3 mb-3">
-      <!-- Product Card -->
-      <card
-        :product="product"
-        v-for="product in products"
-        :key="product.id"
-        @addToPanel="addProduct(product)"
-      ></card>
+    <div class="container">
+      <!-- Product Cart Modal -->
+      <cart>
+        <cart-item
+          v-for="product in products"
+          :key="product.id"
+          :product="product"
+        ></cart-item>
+      </cart>
+
+      <div class="row mt-3 mb-3">
+        <!-- Product Card -->
+        <card
+          :product="product"
+          v-for="product in products"
+          :key="product.id"
+          @addToPanel="addProduct(product)"
+        ></card>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Card from "@/components/products/Card";
-import { mapGetters, mapActions, mapMutations } from "vuex";
+import { mapState, mapActions } from "vuex";
 import Cart from "@/components/products/Cart.vue";
 import CartItem from "@/components/products/CartItem.vue";
 
@@ -34,19 +54,15 @@ export default {
     Cart,
     CartItem,
   },
-  data() {
-    return {
-      ...mapMutations("Products", { setProducts: "SET_PRODUCTS" }),
-    };
-  },
   computed: {
-    ...mapGetters("Products", ["products"]),
+    ...mapState("Products", ["products", "categories"]),
   },
   mounted() {
-    this.setProducts();
+    this.getProducts();
+    this.getCategories();
   },
   methods: {
-    ...mapActions("Products", ["addProduct", "getProducts"]),
+    ...mapActions("Products", ["getProducts", "getCategories"]),
   },
 };
 </script>

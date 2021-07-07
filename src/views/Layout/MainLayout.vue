@@ -38,19 +38,6 @@
       </b-collapse>
     </b-navbar>
 
-    <b-row>
-      <b-col lg="6" class="ml-4">
-        <b-nav>
-          <b-nav-item link-classes="text-dark" active
-            >Toutes les catégories</b-nav-item
-          >
-          <b-nav-item link-classes="text-dark">Link</b-nav-item>
-          <b-nav-item link-classes="text-dark">Another Link</b-nav-item>
-          <b-nav-item link-classes="text-dark" disabled>Disabled</b-nav-item>
-        </b-nav>
-      </b-col>
-    </b-row>
-
     <router-view></router-view>
 
     <footer class="pt-3 pb-3 bg-dark text-white">
@@ -119,6 +106,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+
 export default {
   name: "main-layout",
   data() {

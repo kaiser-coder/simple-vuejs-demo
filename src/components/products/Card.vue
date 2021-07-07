@@ -6,7 +6,7 @@
       img-alt="Image"
       img-top
       tag="article"
-      img-height="400"
+      img-height="250"
     >
       <b-card-text>
         <a
