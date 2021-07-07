@@ -17,7 +17,10 @@
           </b-nav-item>
           <b-nav-item @click.prevent="$bvModal.show('bv-modal-product-cart')">
             <b-icon icon="cart-fill" font-scale="1"></b-icon>
-            Panier <b-badge variant="info">9 </b-badge></b-nav-item
+            Panier
+            <b-badge variant="info"
+              >{{ selectedProductsCount }}
+            </b-badge></b-nav-item
           >
         </b-navbar-nav>
 
@@ -115,6 +118,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "main-layout",
   data() {
@@ -131,6 +135,9 @@ export default {
         email: "nicolasratompoarison@gmail.com",
       },
     };
+  },
+  computed: {
+    ...mapGetters("Carts", ["selectedProductsCount"]),
   },
 };
 </script>

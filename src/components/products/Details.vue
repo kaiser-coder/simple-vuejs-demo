@@ -27,13 +27,21 @@
                   <label for="type-number">Nombre: </label>
                 </b-col>
                 <b-col lg="10">
-                  <b-form-input id="type-number" type="number"></b-form-input>
+                  <b-form-input
+                    id="type-number"
+                    type="number"
+                    v-model="qtt"
+                  ></b-form-input>
                 </b-col>
               </b-row>
 
               <b-row class="mt-4 mb-4">
                 <b-col lg="12">
-                  <b-button block variant="outline-info">
+                  <b-button
+                    block
+                    variant="outline-info"
+                    @click.prevent="chooseProduct(product, qtt)"
+                  >
                     <b-icon icon="bag-plus" font-scale="1"></b-icon>
                     Ajouter le produit</b-button
                   >
@@ -48,9 +56,23 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "product-details",
   props: ["product"],
+  data() {
+    return {
+      qtt: 1,
+    };
+  },
+  methods: {
+    ...mapActions("Carts", ["addProduct"]),
+    chooseProduct(product, qtt) {
+      let item = { product: product, quantity: qtt };
+      this.addProduct(item);
+      this.$bvModal.hide("bv-modal-product-details" + this.product.id);
+    },
+  },
 };
 </script>
 

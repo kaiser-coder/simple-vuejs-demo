@@ -3,10 +3,10 @@
     <div class="alert">
       <b-media tag="li">
         <template #aside>
-          <b-img width="64" alt="placeholder" :src="product.image"></b-img>
+          <b-img width="64" alt="placeholder" :src="item.product.image"></b-img>
         </template>
-        <h5 class="mt-0 mb-1">{{ product.title }}</h5>
-        <h4 class="mb-0">1 X {{ product.price }}</h4>
+        <h5 class="mt-0 mb-1">{{ item.product.title }}</h5>
+        <h4 class="mb-0">{{ item.quantity }} X Ar. {{ item.product.price }}</h4>
 
         <b-button variant="outline-warning" class="mt-2"
           ><b-icon icon="bag-x-fill"></b-icon> Retirer</b-button
@@ -17,18 +17,13 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
   name: "cart-item",
-  props: ["product"],
+  props: ["item"],
   methods: {
     remove_product() {
       this.$emit("removeProductPanel");
     },
-  },
-  computed: {
-    ...mapGetters("Products", ["products"]),
   },
 };
 </script>
