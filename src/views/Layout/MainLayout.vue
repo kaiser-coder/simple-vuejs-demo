@@ -120,11 +120,11 @@ export default {
   data() {
     return {
       authors: [
-        "RATOMPOARISON Rovasoa Tahinjanahary Nicolas",
-        "HENINTSOA Onjaniaina Stephana",
-        "ANDRIATSILAVO Mahery Sitraka",
-        "RANDRIANIAINA Rajosoa",
-        "ANDRIAMANJATO Tsilavo Hery Sitraka",
+        "Rovasoa Tahinjanahary Nicolas RATOMPOARISON",
+        "Onjaniaina Stephana HENINTSOA",
+        "Mahery Sitraka ANDRIATSILAVO",
+        "Rajosoa RANDRIANIAINA",
+        "Tsilavo Hery Sitraka ANDRIAMANJATO",
       ],
       contacts: {
         phone: "034 58 058 75",
