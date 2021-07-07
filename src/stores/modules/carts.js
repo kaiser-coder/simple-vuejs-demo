@@ -20,7 +20,7 @@ const mutations = {
   },
   REMOVE_PRODUCT_PANEL: (state, id) => {
     state.selectedProducts = _.remove(state.selectedProducts, (el) => {
-      return el.id != id;
+      return el.product.id != id;
     });
   },
 };
