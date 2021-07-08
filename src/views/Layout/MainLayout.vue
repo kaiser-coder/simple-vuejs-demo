@@ -128,7 +128,6 @@ export default {
       authors: [
         "Rovasoa Tahinjanahary Nicolas RATOMPOARISON",
         "Onjaniaina Stephana HENINTSOA",
-        "Mahery Sitraka ANDRIATSILAVO",
         "Rajosoa RANDRIANIAINA",
         "Tsilavo Hery Sitraka ANDRIAMANJATO",
       ],
