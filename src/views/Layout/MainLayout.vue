@@ -54,7 +54,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-sm-12 pb-2">
-            <h5>Auteurs</h5>
+            <h5>Auteur</h5>
             <ul class="list-unstyled">
               <li v-for="(author, index) in authors" :key="index" class="pb-3">
                 {{ author }}
@@ -126,14 +126,11 @@ export default {
   data() {
     return {
       authors: [
-        "Rovasoa Tahinjanahary Nicolas RATOMPOARISON",
-        "Onjaniaina Stephana HENINTSOA",
-        "Rajosoa RANDRIANIAINA",
-        "Tsilavo Hery Sitraka ANDRIAMANJATO",
+        "Kaiser Coder",
       ],
       contacts: {
-        phone: "034 58 058 75",
-        email: "nicolasratompoarison@gmail.com",
+        phone: "991.456.1222",
+        email: "kaiser-coder@gmail.com",
       },
     };
   },
