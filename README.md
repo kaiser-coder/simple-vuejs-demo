@@ -1,4 +1,4 @@
-# vuejs-ecommerce
+# Simple Vue JS demo
 
 ## Outils utilisés
 
