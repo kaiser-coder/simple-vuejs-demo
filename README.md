@@ -1,3 +1,5 @@
+**Ce template n'est pas encore fonctionnel**
+
 # Simple Vue JS demo
 
 ## Outils utilisés
